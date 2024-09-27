@@ -1,11 +1,11 @@
 "use client";
 
-import MainSection from "./components/MainSection";
+import Dashboard from "./components/Dashboard";
 
 export default function Home() {
   return (
     <div className="h-screen">
-      <MainSection />
+      <Dashboard />
     </div>
   );
 }
