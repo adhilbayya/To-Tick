@@ -14,12 +14,12 @@ interface SideBarMenuProps {
 
 export default function SideBarMenu({ onAddTask }: SideBarMenuProps) {
   return (
-    <div className="flex flex-col bg-slate-100 min-h-full">
+    <div className="flex flex-col bg-slate-100 min-h-full w-1/6">
       <header>
         <h2 className="text-sm m-2">Adhil</h2>
       </header>
       <main className="flex flex-col m-3 ">
-        <AddTask onAddTask={onAddTask} />
+        <AddTask newTask={onAddTask} />
         <a className="my-1" href="">
           Today
         </a>

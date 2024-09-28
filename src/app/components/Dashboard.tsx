@@ -18,10 +18,11 @@ function Dashboard() {
 
     setTasks([...tasks, newTask]);
   }
+
   return (
     <div className="flex flex-row min-h-full">
       <SideBarMenu onAddTask={handleAddTask} />
-      <MainSection tasks={tasks} onAddTask={handleAddTask} />
+      <MainSection tasks={tasks} />
     </div>
   );
 }

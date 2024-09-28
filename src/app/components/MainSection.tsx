@@ -9,10 +9,9 @@ interface Task {
 
 interface MainSectionProps {
   tasks: Task[];
-  onAddTask: (description: string) => void;
 }
 
-export default function MainSection({ tasks, onAddTask }: MainSectionProps) {
+export default function MainSection({ tasks }: MainSectionProps) {
   return (
     <div className="flex-grow">
       <header className="p-3 text-2xl">Today</header>
