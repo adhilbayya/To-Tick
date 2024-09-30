@@ -8,20 +8,25 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRef, useState } from "react";
-import DateTimePicker from "@/components/time-picker/date-time-form-picker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface AddTaskProps {
-  newTask: (description: string) => void;
+  newTask: (description: string, datetime: Date | null) => void;
 }
 
 const AddTask = ({ newTask }: AddTaskProps) => {
   const [taskInput, setTaskInput] = useState<string>("");
+  const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(
+    new Date()
+  );
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = () => {
     if (taskInput.trim()) {
-      newTask(taskInput);
+      newTask(taskInput, selectedDateTime);
       setTaskInput("");
+      setSelectedDateTime(new Date());
       inputRef.current?.focus();
     }
   };
@@ -48,7 +53,13 @@ const AddTask = ({ newTask }: AddTaskProps) => {
           />
           <div className="flex justify-between">
             <div>
-              <DateTimePicker />
+              <DatePicker
+                selected={selectedDateTime}
+                onChange={(date) => setSelectedDateTime(date)}
+                showTimeSelect
+                dateFormat="Pp"
+                minDate={new Date()}
+              />
             </div>
             <div>
               <DialogClose>

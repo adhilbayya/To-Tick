@@ -3,13 +3,8 @@ import AddTask from "./AddTask";
 import UpcomingTask from "./UpcomingTasks";
 import NewProject from "./NewProject";
 
-interface Task {
-  id: number;
-  description: string;
-}
-
 interface SideBarMenuProps {
-  onAddTask: (description: string) => void;
+  onAddTask: (description: string, datetime: Date | null) => void;
 }
 
 export default function SideBarMenu({ onAddTask }: SideBarMenuProps) {

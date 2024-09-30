@@ -1,5 +1,3 @@
-"use client";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,18 +9,25 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { Calendar } from "../ui/calendar";
 import { format } from "date-fns";
 import { TimePicker12Demo } from "./DateTimePicker";
+import { useState } from "react";
 
 const formSchema = z.object({
   datetime: z.date(),
 });
 
-function DateTimePicker() {
+interface DateTimePickerProps {
+  onAddDateTime: (date: Date) => void;
+}
+
+function DateTimePicker({ onAddDateTime }: DateTimePickerProps) {
+  const [dateTime, setDateTime] = useState<Date | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    setDateTime(values.datetime);
+    onAddDateTime(values.datetime);
   }
 
   // Helper function to reset time to midnight
