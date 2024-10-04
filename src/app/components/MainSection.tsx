@@ -24,7 +24,7 @@ export default function MainSection({ tasks }: MainSectionProps) {
 
   return (
     <div className="flex-grow">
-      <header className="p-3 text-2xl">Today</header>
+      <header className="m-3 text-2xl">Today</header>
       <main className="p-3">
         <ul className="bg-slate-200 w-1/2 rounded-xl my-4">
           {tasks.map((task) => (
